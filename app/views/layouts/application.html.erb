@@ -13,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%# Login alerts %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <%# end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
