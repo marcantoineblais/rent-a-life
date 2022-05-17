@@ -1,9 +1,49 @@
 
 <h1>Index - Bookings Controller</h1>
 
+
+<h2>Requests I made</h2>
+
+<h3>My pending requests</h3>
 <ul>
-  <% @bookings.each do |booking| %>
-    <%# Volontary put the booking instance like this, for testing %>
-    <li> <%= booking.start_date %> to <%= booking.end_date %> <%= link_to "See details", booking_path(booking) %></li>
-  <% end %>
+<% Booking.pending.where(user: @user).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
+</ul>
+
+<h3>My accepted requests</h3>
+<ul>
+<% Booking.accepted.where(user: @user).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
+</ul>
+
+<h3>My refused requests</h3>
+<ul>
+<% Booking.refused.where(user: @user).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
+</ul>
+
+
+<h2>Requests on my lives</h2>
+<h3>My pending requests</h3>
+<ul>
+<% @user.bookings.where(status: :pending).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
+</ul>
+
+<h3>My accepted requests</h3>
+<ul>
+<% @user.bookings.where(status: :accepted).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
+</ul>
+
+<h3>My refused requests</h3>
+<ul>
+<% @user.bookings.where(status: :refused).each do |b| %>
+  <li> <%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></li>
+<% end %>
 </ul>

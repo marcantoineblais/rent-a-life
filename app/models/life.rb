@@ -1,5 +1,5 @@
 class Life < ApplicationRecord
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   belongs_to :user
 
   validates :user, :title, :description, :price, presence: true

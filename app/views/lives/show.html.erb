@@ -1,7 +1,9 @@
 <h1>Show : <%= @life.title %> </h1>
 
-<ul>
-  <li><%= @life.title %></li>
-  <li><%= @life.description %></li>
-  <li><%= @life.price %></li>
-</ul>
+<div>
+  <h2><%= @life.title %></h2>
+  <p><%= @life.description %></p>
+  <p><%= @life.price %></p>
+</div>
+
+<%= link_to 'Back', lives_path %>

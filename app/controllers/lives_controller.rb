@@ -2,8 +2,8 @@ class LivesController < ApplicationController
   def index
     @lives = Life.all
   end
-  
-    def show
+
+  def show
     @life = Life.find(params[:id])
   end
 
@@ -13,6 +13,7 @@ class LivesController < ApplicationController
 
   def update
     @life = Life.find(params[:id])
+    @life.user = current_user
     @life.update(life_params)
 
     redirect_to life_path(@life)
@@ -23,6 +24,10 @@ class LivesController < ApplicationController
     @life.destroy
 
     redirect_to lives_path
+  end
+
+  def my_lives
+    @lives = current_user.lives
   end
 
   private
