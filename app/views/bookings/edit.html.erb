@@ -4,6 +4,6 @@
 <p><%= @booking.end_date %></p>
 
 <%= simple_form_for(@booking) do |f| %>
-  <%= f.input :status, Booking.accept_or_refuse %>
+  <%= f.input :status, collection: Booking.accept_or_refuse %>
   <%= f.button :submit %>
 <% end %>
