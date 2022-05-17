@@ -1,0 +1,11 @@
+<h1> Edit <%= @life.title %></h1>
+
+<%= simple_form_for(@Life) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <%= f.submit %>
+<% end %>
