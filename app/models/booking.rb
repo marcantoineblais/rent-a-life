@@ -14,7 +14,8 @@ class Booking < ApplicationRecord
   end
 
   def booked_dates
-    Booking.where(life: life).map { |b| date_range(b).to_a unless b.id == id }.compact.flatten
+    life = Life.find(params[:life_id])
+    life.booked_dates
   end
 
   def dates_taken
