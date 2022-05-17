@@ -1,5 +1,8 @@
 Booking.delete_all
 Life.delete_all
+User.delete_all
+
+User.create(first_name: 'admin', last_name: "istrator", password: '123456', email: "a@a.ca")
 
 10.times do
   Life.create(title: Faker::Artist.name, description: 'Fake life for tests', user_id: 1, price: 99.99)
