@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   def index
-    @user = current_user
     @bookings = Booking.where(user: current_user)
   end
 
@@ -34,10 +33,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @life = @booking.life
     if @booking.update(status_params)
-      redirect_to life_bookings_path(@life)
+      redirect_to requests_path
     else
       render :edit
     end
+  end
+
+  def requests
+    @bookings = current_user.bookings
   end
 
   private

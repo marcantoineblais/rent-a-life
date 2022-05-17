@@ -1,7 +1,13 @@
 <h1>All Lives</h1>
 
-<ul>
+<div class="cards">
   <% @lives.each do |life| %>
-    <li><%= link_to life.title, life_path(life) %></li>
+    <div class="card p-3">
+      <div class="card-body">
+        <h2 class="card-title"><%= link_to life.title, life_path(life) %></h2>
+        <p class="card-text"><%= life.description %></p>
+      </div>
+    </div>
   <% end %>
 </ul>
+</div>
