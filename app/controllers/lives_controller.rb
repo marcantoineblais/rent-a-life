@@ -1,10 +1,28 @@
 class LivesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index, :show
+
   def index
     @lives = Life.all
   end
 
   def show
     @life = Life.find(params[:id])
+  end
+
+  def new
+    @life = Life.new
+  end
+
+  def create
+    params[:life][:price].gsub!(',', '.')
+    @life = Life.new(life_params)
+    @life.user = current_user
+
+    if @life.save
+      redirect_to life_path(@life)
+    else
+      render :new
+    end
   end
 
   def edit
