@@ -1,0 +1,8 @@
+<h1> Edit <%= @life.title %></h1>
+
+<%= simple_form_for(@life) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price, as: :string %>
+  <%= f.button :submit %>
+<% end %>

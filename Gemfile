@@ -69,3 +69,6 @@ gem 'devise'
 
 # Populate DB with fake names
 gem 'faker'
+
+# Enum auto setup
+gem 'enum_help'

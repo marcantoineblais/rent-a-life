@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
 
-  resources :bookings, only: %i[edit show index update]
+  resources :bookings, only: %i[index edit show update]
   get '/my-lives', to: 'lives#my_lives'
 end

@@ -1,0 +1,9 @@
+<h2>Pending requests</h2>
+
+<p><%= @booking.start_date %></p>
+<p><%= @booking.end_date %></p>
+
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :status, collection: Booking.accept_or_refuse %>
+  <%= f.button :submit %>
+<% end %>

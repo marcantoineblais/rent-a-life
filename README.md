@@ -15,8 +15,12 @@ Build by : [MarcAntoine](https://github.com/marcantoineblais) / [Florent](https:
 - Home : (https://rent-a-life.herokuapp.com/)
 - Sign-in : (https://rent-a-life.herokuapp.com/users/sign_in)
 - Sign-up : (https://rent-a-life.herokuapp.com/users/sign_up)
+- My bookings : (https://rent-a-life.herokuapp.com/lives/:id/bookings)
+- My booking : (https://rent-a-life.herokuapp.com/lives/:life_idbookings/:id) - With an id -
 
 ### In local :
 - Home : (localhost:3000)
 - Sign-in : (localhost:3000/users/sign_in)
 - Sign-up : (localhost:3000/users/sign_up)
+- My bookings : (localhost:3000/lives/bookings)
+- My booking : (localhost:3000/lives/:life_id/bookings/:id) - With an id -
