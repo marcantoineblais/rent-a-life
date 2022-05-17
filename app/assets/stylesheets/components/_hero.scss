@@ -1,9 +1,10 @@
-.container-fluid
-
 .hero {
   background-size: cover;
   background-position: center;
   padding: 150px 0;
+  display: flex;
+  justify-content: center;
+  height: 70vh;
 }
 
 .hero h1 {
@@ -19,5 +20,9 @@
   color: #ddca4c;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
 
+.hero-info {
+  text-align: center;
+  padding-top: inherit
 }
