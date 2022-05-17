@@ -18,7 +18,7 @@ class Booking < ApplicationRecord
   end
 
   def dates_taken
-    if booked_dates.any? { |b| p date_range.include?(b) }
+    if booked_dates.any? { |b| date_range.include?(b) }
       errors.add(:start_date, "Dates are already booked.")
     end
   end
