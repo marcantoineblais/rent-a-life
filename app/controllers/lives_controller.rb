@@ -1,5 +1,5 @@
 class LivesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index, :show
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @lives = Life.all
@@ -31,9 +31,12 @@ class LivesController < ApplicationController
 
   def update
     @life = Life.find(params[:id])
-    @life.update(life_params)
-
-    redirect_to life_path(@life)
+    @life.user = current_user
+    if @life.update(life_params)
+      redirect_to life_path(@life)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,6 +44,10 @@ class LivesController < ApplicationController
     @life.destroy
 
     redirect_to lives_path
+  end
+
+  def my_lives
+    @lives = current_user.lives
   end
 
   private

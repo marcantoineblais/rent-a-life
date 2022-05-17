@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :lives do
-    resources :bookings, only: %i[index new create]
+    resources :bookings, only: %i[new create]
   end
 
-  resources :bookings, only: %i[edit show update]
+  resources :bookings, only: %i[index edit show update]
   get '/my-lives', to: 'lives#my_lives'
 end
