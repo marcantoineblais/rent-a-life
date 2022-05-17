@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :bookings, only: %i[index edit show update]
   get '/my-lives', to: 'lives#my_lives'
+  get '/my-booking-requests', to: 'bookings#requests', as: :requests
 end

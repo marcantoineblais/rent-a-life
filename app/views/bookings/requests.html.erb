@@ -1,5 +1,4 @@
-
-<h1>Requests on my lives</h1>
+<h1>My pending requests</h1>
 
 <h2>Pending</h2>
 <div class="cards">
@@ -8,9 +7,10 @@
       <div class="class-body">
         <h2 class="card-title"><%= b.life.title %></h2>
         <p class="card-text"><%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></p>
+        <%= link_to 'Review request', edit_booking_path(b) %>
       </div>
     </div>
-<% end %>
+  <% end %>
 </div>
 
 <h2>Accepted</h2>
@@ -20,19 +20,8 @@
       <div class="class-body">
         <h2 class="card-title"><%= b.life.title %></h2>
         <p class="card-text"><%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></p>
+        <%= link_to 'Review request', edit_booking_path(b) %>
       </div>
     </div>
-  <% end %>
-</div>
-
-<h2>Refused</h2>
-  <div class="cards">
-    <% @bookings.select(&:refused?).each do |b| %>
-      <div class="card p-3">
-        <div class="class-body">
-          <h2 class="card-title"><%= b.life.title %></h2>
-          <p class="card-text"><%= b.start_date %> to <%= b.end_date %> <%= link_to "See details", booking_path(b) %></p>
-        </div>
-      </div>
   <% end %>
 </div>
