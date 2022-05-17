@@ -2,6 +2,10 @@ class LivesController < ApplicationController
   def index
     @lives = Life.all
   end
+  
+    def show
+    @life = Life.find(params[:id])
+  end
 
   def edit
     @life = Life.find(params[:id])
