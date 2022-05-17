@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @life = Life.find(params[:life_id])
     @booking.life = @life
     if @booking.save
-      redirect_to life_bookings_path(@life)
+      redirect_to life_path(@life)
     else
       render :new
     end
