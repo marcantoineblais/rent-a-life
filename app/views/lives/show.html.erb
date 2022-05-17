@@ -6,6 +6,8 @@
   <p><%= @life.price %></p>
 </div>
 
+<%= link_to 'Make a reservation', new_life_booking_path(@life) %>
+
 <% if @life.user == current_user %>
   <%= link_to 'Edit', edit_life_path(@life) %>
 <% end %>
