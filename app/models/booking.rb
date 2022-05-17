@@ -14,7 +14,6 @@ class Booking < ApplicationRecord
   end
 
   def booked_dates
-    life = Life.find(params[:life_id])
     life.booked_dates
   end
 
