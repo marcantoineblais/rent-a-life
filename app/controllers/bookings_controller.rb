@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = params[:id]
-    @f = @booking.life
+    @booking = Booking.find(params[:id])
+    @life = Life.find(@booking.life_id)
   end
 end
