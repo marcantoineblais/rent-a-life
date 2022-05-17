@@ -66,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User login management
 gem 'devise'
+
+# Populate DB with fake names
+gem 'faker'
