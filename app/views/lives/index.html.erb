@@ -9,5 +9,10 @@
       </div>
     </div>
   <% end %>
+
+  <% if @user == current_user %>
+  <%= link_to 'Add a life', new_life_path %>
+  <% end %>
+
 </ul>
 </div>
