@@ -18,55 +18,31 @@
 
 
 
- <div class="card-home py-5">
+<div class="card-home py-5">
   <h3 class="pb-5 mb-0"> our top 3 lives this week : </h3>
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @lives.first(3).each do |life| %>
         <div class="col d-flex justify-content-center">
-         <div class="card shadow-sm" style="width: 18rem;">
-          <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/d/d8/Michael_J._Fox_as_Marty_McFly_in_Back_to_the_Future%2C_1985.jpg" alt="Card image cap">
+
+          <div class="card shadow-sm d-flex flex-column justify-content-between" style="width: 18rem;">
+            <img class="card-img-top" src="<%= life.image_url %>" alt="Card image cap" style="height: 320px; object-fit: cover">
+
             <div class="card-body">
-              <p class="card-text">Marty McFly </p>
+              <p class="card-text"><%= life.title %> </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <%# <%= link_to "View", life_path(life) %>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Book</button>
+                  <%= link_to 'View', life_path(life), class: 'btn btn-sm btn-outline-secondary'  %>
+                  <%= link_to 'Book', new_life_booking_path(life), class: 'btn btn-sm btn-outline-secondary'  %>
                 </div>
-                <small class="text-muted">price</small>
+                <small class="text-muted"><%= life.price %>$</small>
               </div>
             </div>
+
+          </div>
         </div>
-        </div>
-        <div class="col d-flex justify-content-center">
-           <div class="card shadow-sm" style="width: 18rem;">
-          <img class="card-img-top" src="https://cdn.britannica.com/72/163272-050-1C5BC2B7/Neil-Armstrong-American.jpg" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">Neil Amstrong</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Book</button>
-                </div>
-                <small class="text-muted">price</small>
-              </div>
-            </div>
-        </div>
-        </div>
-        <div class="col d-flex justify-content-center">
-          <div class="card shadow-sm" style="width: 18rem;">
-          <img class="card-img-top" src="https://imageio.forbes.com/blogs-images/jvchamary/files/2016/03/man_of_steel-1200x800.jpg?fit=bounds&format=jpg&width=960" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">Superman </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Book</button>
-                </div>
-                <small class="text-muted">price</small>
-              </div>
-            </div>
-        </div>
-        </div>
+      <% end %>
     </div>
   </div>
+</div>

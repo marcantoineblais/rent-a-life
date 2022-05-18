@@ -2,27 +2,28 @@
 
   <h1>Pending requests</h1>
 
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title"><%= @booking.life.title %></h2>
+  <div class="d-flex justify-content-center p-3">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title"><%= @booking.life.title %></h2>
 
-      <% if @booking.life.user == current_user %>
-        <p><%= @booking.start_date %></p>
-        <p><%= @booking.end_date %></p>
-        <%= simple_form_for(@booking) do |f| %>
-          <%= f.input :status, selected: 1, collection: Booking.accept_or_refuse %>
+        <% if @booking.life.user == current_user %>
+          <p><%= @booking.start_date %></p>
+          <p><%= @booking.end_date %></p>
+          <%= simple_form_for(@booking) do |f| %>
+            <%= f.input :status, selected: 1, collection: Booking.accept_or_refuse %>
+            <%= f.button :submit, class: 'btn btn-primary' %>
+          <% end %>
+
+        <% elsif @booking.user == current_user %>
+          <%= simple_form_for([@booking]) do |f| %>
+          <%= f.input :start_date, as: :date, html5: true %>
+          <%= f.input :end_date, as: :date, html5: true %>
           <%= f.button :submit, class: 'btn btn-primary' %>
+          <% end %>
         <% end %>
 
-      <% elsif @booking.user == current_user %>
-        <%= simple_form_for([@booking]) do |f| %>
-        <%= f.input :start_date, as: :date, html5: true %>
-        <%= f.input :end_date, as: :date, html5: true %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-        <% end %>
-      <% end %>
-
-
+      </div>
     </div>
   </div>
 </div>
