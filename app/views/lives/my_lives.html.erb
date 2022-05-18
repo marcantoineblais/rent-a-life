@@ -1,9 +1,13 @@
-<h1>My lives</h1>
+<div class="container">
+  <h1>My lives</h1>
 
-<ul>
-  <% @lives.each do |life| %>
-    <li><%= link_to life.title, life_path(life) %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'Add a life', new_life_path %>
+  <div class="cards">
+    <% @lives.each do |life| %>
+      <div class="card p-3">
+          <h2 class="card-title"><%= link_to life.title, life_path(life) %></h2>
+          <p class="card-text"><%= life.description %></p>
+          <p class="card-text"><%= life.price %>$</p>
+      </div>
+    <% end %>
+  </div>
+</div>
