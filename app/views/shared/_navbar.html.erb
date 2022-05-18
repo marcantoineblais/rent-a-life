@@ -15,7 +15,7 @@
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
 
-              <p class="dropdown-toggle nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Menu </p>
+              <p class="dropdown-toggle nav-link mb-0" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Menu </p>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My requests", requests_path, class: "dropdown-item" %>
                 <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
