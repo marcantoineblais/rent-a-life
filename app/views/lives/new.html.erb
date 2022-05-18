@@ -1,8 +1,13 @@
-<h1>New Life</h1>
-
-<%= simple_form_for(@life) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description  %>
-  <%= f.input :price, as: :string %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <h1>Share a life</h1>
+  <div class="row justify-content-center">
+    <div class="col-6 p-3">
+      <%= simple_form_for(@life) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description  %>
+        <%= f.input :price, as: :string %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

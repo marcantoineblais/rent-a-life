@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @life = Life.find(@booking.life_id)
   end
 
   def new
@@ -31,12 +30,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @life = @booking.life
-    if @booking.update(status_params)
-      redirect_to requests_path
-    else
-      render :edit
-    end
+    render :edit unless owner_or_user
   end
 
   def requests
@@ -51,5 +45,19 @@ class BookingsController < ApplicationController
 
   def status_params
     params.require(:booking).permit(:status)
+  end
+
+  def pending_edit_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def owner_or_user
+    if @booking.life.user == current_user
+      redirect_to requests_path if @booking.update(status_params)
+    elsif @booking.user == current_user
+      redirect_to bookings_path if @booking.update(pending_edit_params)
+    else
+      return false
+    end
   end
 end
