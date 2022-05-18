@@ -9,7 +9,10 @@ class Booking < ApplicationRecord
 
   def before_end
     if start_date && end_date
-      errors.add(:start_date, "Start date must be before end date.") unless start_date < end_date
+      unless start_date < end_date
+        errors.add(:start_date, "Start date must be before end date.")
+        errors.add(:end_date, "End date must be after start date.")
+      end
     end
   end
 
@@ -22,8 +25,10 @@ class Booking < ApplicationRecord
   end
 
   def dates_taken
-    if booked_dates.any? { |b| date_range.include?(b) }
+    if booked_dates.any? { |b| date_range.include?(b) } && !refused?
       errors.add(:start_date, "Dates are already booked.")
+      errors.add(:end_date, "Dates are already booked.")
+      errors.add(:status, "Dates are already booked.")
     end
   end
 
