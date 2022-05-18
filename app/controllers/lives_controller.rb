@@ -3,7 +3,6 @@ class LivesController < ApplicationController
 
   def index
     @lives = Life.all
-    @user = current_user
   end
 
   def show
