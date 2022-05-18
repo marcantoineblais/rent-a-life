@@ -5,7 +5,7 @@
       <div class="card-body">
         <h2 class="card-title"><%= @life.title %></h2>
         <p><%= @life.description %></p>
-        <p><%= @life.price %></p>
+        <p><%= @life.price %>$</p>
 
         <% if @life.user == current_user %>
           <%= link_to 'Edit', edit_life_path(@life), class: 'btn btn-primary' %>

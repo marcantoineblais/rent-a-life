@@ -12,11 +12,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body style="min-height: 100vh; position: relative">
     <%# Login alerts %>
     <%# end %>
     <%= render "shared/navbar" %>
-    <div class="yield-background">
+    <div class="yield-background" style="min-height: 100%">
       <%= yield %>
       <p class="notice mb-0"><%= notice %></p>
       <p class="alert"><%= alert %></p>
