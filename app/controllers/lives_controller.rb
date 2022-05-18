@@ -14,10 +14,8 @@ class LivesController < ApplicationController
   end
 
   def create
-    params[:life][:price].gsub!(',', '.')
     @life = Life.new(life_params)
     @life.user = current_user
-
     if @life.save
       redirect_to life_path(@life)
     else

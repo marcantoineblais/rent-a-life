@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 2022_05_18_190144) do
   create_table "lives", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.float "price"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
