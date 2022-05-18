@@ -8,7 +8,9 @@ class Booking < ApplicationRecord
   enum status: { pending: 0, accepted: 1, refused: 2, cancelled: 3 }
 
   def before_end
-    errors.add(:start_date, "Start date must be before end date.") unless start_date < end_date
+    if start_date && end_date
+      errors.add(:start_date, "Start date must be before end date.") unless start_date < end_date
+    end
   end
 
   def date_range(inst = self)
