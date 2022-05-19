@@ -40,16 +40,6 @@ class Booking < ApplicationRecord
     statuses.except :cancelled, :pending
   end
 
-  # def possible_conflicts
-  #   reference_range = date_range
-  #   pending_bookings.to_a.select do |b|
-  #     unless b == self
-  #       range = Range.new(b.start_date, b.end_date).to_a
-  #       range.any? { |date| reference_range.include?(date) }
-  #     end
-  #   end
-  # end
-
   def possible_conflicts
     pending_bookings.to_a.select do |b|
       b.date_range.any? { |date| self.date_range.include?(date) } unless b == self
