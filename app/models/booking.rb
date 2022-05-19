@@ -24,6 +24,10 @@ class Booking < ApplicationRecord
     life.booked_dates
   end
 
+  def pending_bookings
+    life.pending_bookings
+  end
+
   def dates_taken
     if booked_dates.any? { |b| date_range.include?(b) } && !refused?
       errors.add(:start_date, "Dates are already booked.")
@@ -34,5 +38,15 @@ class Booking < ApplicationRecord
 
   def self.accept_or_refuse
     statuses.except :cancelled, :pending
+  end
+
+  def possible_conflicts
+    reference_range = date_range
+    pending_bookings.to_a.select do |b|
+      unless b == self
+        range = Range.new(b.start_date, b.end_date).to_a
+        range.any? { |date| reference_range.include?(date) }
+      end
+    end
   end
 end
