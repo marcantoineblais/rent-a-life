@@ -6,9 +6,10 @@ class User < ApplicationRecord
 
   has_many :lives
   has_many :bookings, through: :lives
+  has_one_attached :profile_picture
 
   validates :email, presence: true, uniqueness: true
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :password, presence: true
 
   def fullname
     "#{first_name.capitalize} #{last_name.capitalize}"
