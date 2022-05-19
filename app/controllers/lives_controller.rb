@@ -51,6 +51,6 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :price)
+    params.require(:life).permit(:title, :description, :price, :photo)
   end
 end
