@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/8dbd947086.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body style="min-height: 100vh; position: relative">
-    <%# Login alerts %>
-    <%# end %>
+  <body>
     <%= render "shared/navbar" %>
-    <div class="yield-background" style="min-height: 100%">
-      <%= yield %>
-      <p class="notice mb-0"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <%= yield %>
     <%= render "shared/footer" %>
+
+    <% if notice %>
+      <div class="notice-msg">
+        <div class="notice">
+          <p><%= notice %></p>
+          <a href="#"><i class="fa-solid fa-x"></i></a>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <p class="alert alert-info"><%= alert %></p>
+    <% end %>
   </body>
 </html>

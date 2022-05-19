@@ -15,10 +15,12 @@
 // Custom Component
 @import "components/cards";
 
-
-.notice {
-  margin-top: 1em;
-  font-size: 48px;
-  background-color: #aab84444;
-  color: #999;
+body {
+min-height: 100vh;
+height: 100%;
+position: relative;
+box-sizing: border-box;
+padding-bottom: 150px;
+background-color: #FEF9EF;
+text-align: center;
 }
