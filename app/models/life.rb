@@ -6,6 +6,9 @@ class Life < ApplicationRecord
   monetize :price_cents
   validates :user, :title, :description, :price_cents, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def pending_requests
     Booking.where(life: self, status: :pending)
   end

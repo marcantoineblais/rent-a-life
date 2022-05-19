@@ -3,6 +3,12 @@ class LivesController < ApplicationController
 
   def index
     @lives = Life.all.reject { |live| live.user == current_user }
+    @markers = @lives.geocoded.map do |life|
+      {
+        lat: life.latitude,
+        lng: life.longitude
+      }
+    end
   end
 
   def show
