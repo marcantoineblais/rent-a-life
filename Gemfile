@@ -72,3 +72,6 @@ gem 'faker'
 
 # Enum auto setup
 gem 'enum_help'
+
+# Money management in forms
+gem 'money-rails'

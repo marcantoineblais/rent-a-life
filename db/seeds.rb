@@ -14,7 +14,7 @@ Life.create(title: 'Superman', description: 'For demo purpose only', price: 99.9
 
 users.each do |user|
   10.times do
-    Life.create(title: Faker::Artist.name, description: 'Fake life for tests', user: user, price: 99.99)
+    Life.create(title: Faker::Artist.unique.name, description: 'Fake life for tests', user: user, price: 99.99)
   end
 end
 

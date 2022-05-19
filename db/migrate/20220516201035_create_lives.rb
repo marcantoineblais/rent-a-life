@@ -3,7 +3,7 @@ class CreateLives < ActiveRecord::Migration[6.1]
     create_table :lives do |t|
       t.string :title
       t.string :description
-      t.float :price
+      t.monetize :price
 
       t.timestamps
     end
