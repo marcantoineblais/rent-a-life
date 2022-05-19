@@ -4,7 +4,10 @@
     <div class="card p-3">
       <div class="card-body">
         <h2 class="card-title"><%= @life.title %></h2>
-        <%= cl_image_tag @life.photo.key, height: 300, width: 400, crop: :fill %>
+        <% begin %>
+          <%= cl_image_tag @life.photo.key, height: 300, width: 400, crop: :fill %>
+        <% rescue %>
+        <% end %>
         <p><%= @life.description %></p>
         <p><%= @life.price %>$</p>
 
