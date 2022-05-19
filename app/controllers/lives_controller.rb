@@ -13,6 +13,12 @@ class LivesController < ApplicationController
     else
       @lives = Life.all
     end
+    @markers = @lives.geocoded.map do |life|
+      {
+        lat: life.latitude,
+        lng: life.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { life: life })
+      }
   end
 
   def show
