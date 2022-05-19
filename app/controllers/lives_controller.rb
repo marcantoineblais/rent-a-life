@@ -2,7 +2,7 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @lives = Life.all.reject { |live| live.user == current_user }
+    @lives = Life.where('user_id != ?', current_user.id)
     @markers = @lives.geocoded.map do |life|
       {
         lat: life.latitude,
