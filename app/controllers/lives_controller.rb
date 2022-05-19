@@ -2,7 +2,13 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @lives = Life.all.reject { |live| live.user == current_user }
+    if params[:query].present?
+      result = Life.search_by_title_and_description(params[:query])
+      @lives = result.all.reject { |live| live.user == current_user }
+    else
+      @lives = Life.all.reject { |live| live.user == current_user }
+    end
+
   end
 
   def show

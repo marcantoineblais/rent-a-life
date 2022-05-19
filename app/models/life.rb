@@ -6,6 +6,13 @@ class Life < ApplicationRecord
   monetize :price_cents
   validates :user, :title, :description, :price_cents, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_description,
+    against: [ :title, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def pending_requests
     Booking.where(life: self, status: :pending)
   end
