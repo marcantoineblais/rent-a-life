@@ -37,6 +37,17 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    if current_user == @booking.life.user
+      @booking.cancelled!
+      notice = 'This booking was cancelled'
+    else
+      notice = "You do not have the permission to cancel this booking. Please contact this life's owner."
+    end
+    redirect_to requests_path, notice: notice
+  end
+
   private
 
   def booking_params
