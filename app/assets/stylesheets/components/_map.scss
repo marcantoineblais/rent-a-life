@@ -3,12 +3,17 @@
   width: 80%;
   margin: 0 auto;
   object-fit: cover;
+  position: relative;
 
   .text {
     padding: 1em 2em;
   }
+
   .mapboxgl-popup {
-    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
   }
 
   .mapboxgl-popup-content {
