@@ -3,16 +3,21 @@ class Booking < ApplicationRecord
   belongs_to :user
 
   validates :life, :user, :start_date, :end_date, presence: true
-  validate :before_end, :dates_taken
+  validate :before_end, :dates_taken, :not_past
 
   enum status: { pending: 0, accepted: 1, refused: 2, cancelled: 3 }
 
   def before_end
-    if start_date && end_date
-      unless start_date < end_date
-        errors.add(:start_date, "Start date must be before end date.")
-        errors.add(:end_date, "End date must be after start date.")
-      end
+    if start_date && end_date && start_date > end_date
+      errors.add(:start_date, "Start date must be before end date.")
+      errors.add(:end_date, "End date must be after start date.")
+    end
+  end
+
+  def not_past
+    if start_date && end_date && start_date < Date.today
+      errors.add(:start_date, "can't be in the past")
+      errors.add(:end_date, "can't be in the past")
     end
   end
 
@@ -29,9 +34,9 @@ class Booking < ApplicationRecord
   end
 
   def dates_taken
-    if booked_dates.any? { |b| date_range.include?(b) } && !refused?
-      errors.add(:start_date, "Dates are already booked.")
-      errors.add(:end_date, "Dates are already booked.")
+    if start_date && end_date && booked_dates.any? { |b| date_range.include?(b) } && !refused? && !cancelled?
+      errors.add(:start_date, "already booked.")
+      errors.add(:end_date, "already booked.")
       errors.add(:status, "Dates are already booked.")
     end
   end

@@ -12,7 +12,7 @@
           <p>From <%= @booking.start_date %> to <%= @booking.end_date %></p>
           <%= simple_form_for(@booking) do |f| %>
             <%= f.input :status, selected: 1, collection: Booking.accept_or_refuse %>
-            <%= f.button :submit, class: 'btn btn-primary' %>
+            <%= f.button :submit, class: 'btn btn-primary', data: { confirm: "#{'You will refuse all conflicting requests below if you accept. 'if @booking.possible_conflicts}"'Are you sure?' } %>
           <% end %>
 
         <% elsif @booking.user == current_user %>
@@ -32,7 +32,7 @@
       <% @booking.possible_conflicts.each do |conflict| %>
         <div class="card col-3 p-3 m-1">
           <div class="card-body">
-            <h2><%= conflict.user.fullname %></h2>
+            <h2><%= conflict.title %></h2>
             <p>From <%= conflict.start_date %> to <%= conflict.end_date %></p>
             <p>Requested by <%= @booking.user.fullname %></p>
           </div>
