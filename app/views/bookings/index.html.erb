@@ -4,14 +4,58 @@
   <h2>Pending</h2>
   <div class="cards">
     <% @bookings.select(&:pending?).each do |b| %>
-      <div class="card p-3">
-        <div class="class-body">
-          <h2 class="card-title"><%= b.life.title %></h2>
-          <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
-          <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+  <div class="card booking-card w-100">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="date-wrapper">
+            <div class="date-block">
+                <span class="date-block-day"><%= b.start_date.strftime("%d") %></span>
+                <span class="date-block-month"><%= b.start_date.strftime("%B") %></span>
+            </div>
+            <div class="widget-49-meeting-info">
+                <span class="widget-49-pro-title"> TO </span>
+            </div>
+            <div class="date-block">
+                <span class="date-block-day"><%= b.end_date.strftime("%d") %></span>
+                <span class="date-block-month"><%= b.end_date.strftime("%B") %></span>
+            </div>
+          </div>
+          <div class="date-days mt-4">
+            <p>Your booking is for <%= b.date_range.count %><%= b.date_range.count > 1 ? ' days' : ' day' %></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="booking-card-block">
+            <div class="booking-card-name">
+              <h2 class="card-title"><%= b.life.title %></h2>
+            </div>
+            <div class="booking-card-price">
+              <p><%= b.life.price %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+         <div class="booking-card-block">
+            <div class="booking-card-status">
+              <h3>Status: <%= b.status %></h3>
+            </div>
+            <div class="booking-card-btn">
+              <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+            </div>
+         </div>
         </div>
       </div>
-  <% end %>
+
+    </div>
+  </div>
+
+
+
+
+
+
+    <% end %>
   </div>
 
   <h2>Accepted</h2>
@@ -28,16 +72,15 @@
   </div>
 
   <h2>Refused</h2>
-    <div class="cards">
-      <% @bookings.select(&:refused?).each do |b| %>
-        <div class="card p-3">
-          <div class="class-body">
-            <h2 class="card-title"><%= b.life.title %></h2>
-            <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
-            <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
-          </div>
+  <div class="cards">
+    <% @bookings.select(&:refused?).each do |b| %>
+      < class="card p-3">
+        <div class="class-body">
+          <h2 class="card-title"><%= b.life.title %></h2>
+          <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
+          <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
