@@ -3,21 +3,7 @@
 
   <div class="cards">
     <% @lives.each do |life| %>
-      <div class="simple-card">
-        <% if life.photo.key %>
-          <img src=<%= cl_image_path life.photo.key %> class="img img-responsive">
-        <% else %>
-          <div class="img img-responsive no-photo"></div>
-        <% end %>
-        <div class="simple-card-name"><%= link_to life.title, life_path(life) %></div>
-        <div class="simple-card-description"><%= life.description %></div>
-        <div class="simple-card-price-and-btn">
-        <div class="simple-card-price"><%= life.price %></div>
-          <div class="simple-card-btn">
-            <%= link_to "Delete this life", life_path(life), method: 'delete', data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-          </div>
-        </div>
-      </div>
+      <%= render 'simplecard', life: life %>
     <% end %>
   </div>
 </div>

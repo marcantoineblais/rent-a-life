@@ -19,29 +19,12 @@
 
 
 <div class="card-home py-5">
-  <h3 class="pb-5 mb-0"> our top 3 lives this week : </h3>
+  <h3 class="pb-5 mb-0">Featured lives:</h3>
 
   <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <% @lives.first(3).each do |life| %>
-        <div class="col d-flex justify-content-center">
-
-          <div class="card shadow-sm d-flex flex-column justify-content-between" style="width: 18rem;">
-            <img class="card-img-top" src="<%= life.image_url %>" alt="Card image cap" style="height: 320px; object-fit: cover">
-
-            <div class="card-body">
-              <p class="card-text"><%= life.title %> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to 'View', life_path(life), class: 'btn btn-sm btn-outline-secondary'  %>
-                  <%= link_to 'Book', new_life_booking_path(life), class: 'btn btn-sm btn-outline-secondary'  %>
-                </div>
-                <small class="text-muted"><%= life.price %>$</small>
-              </div>
-            </div>
-
-          </div>
-        </div>
+    <div class="cards mt-3">
+      <% @lives.sample(6).each do |life| %>
+        <%= render 'lives/simplecard', life: life %>
       <% end %>
     </div>
   </div>

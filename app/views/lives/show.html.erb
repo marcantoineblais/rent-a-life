@@ -1,24 +1,7 @@
 <div class="container py-5">
   <h2>Life details</h2>
-  <div class="cards">
-    <div class="card p-3">
-      <div class="card-body">
-        <h2 class="card-title"><%= @life.title %></h2>
-        <% begin %>
-          <%= cl_image_tag @life.photo.key %>
-        <% rescue %>
-        <% end %>
-        <p><%= @life.description %></p>
-        <p><%= @life.price %>$</p>
-
-        <% if @life.user == current_user %>
-          <%= link_to 'Edit', edit_life_path(@life), class: 'btn btn-primary' %>
-        <% else %>
-          <%= link_to 'Book this life', new_life_booking_path(@life), class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-    </div>
-
+  <div class="cards mt-3">
+    <%= render 'simplecard', life: @life %>
   </div>
     <%= link_to 'Back', lives_path %>
 </div>

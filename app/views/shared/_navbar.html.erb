@@ -11,7 +11,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-          <%= link_to "Lives", lives_path, class: "nav-link pe-4" %>
+          <%= link_to "See all lives", lives_path, class: "nav-link pe-5 py-3 m-0" %>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
             <% if current_user.profile_picture.key %>
