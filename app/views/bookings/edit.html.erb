@@ -1,15 +1,15 @@
 <div class="container">
+  <div class="row justify-content-center p-3">
 
-  <h1>Pending requests</h1>
+    <h1>Pending requests</h1>
 
-  <div class="d-flex justify-content-center p-3">
-    <div class="card">
+    <div class="card col-4">
       <div class="card-body">
         <h2 class="card-title"><%= @booking.life.title %></h2>
 
         <% if @booking.life.user == current_user %>
-          <p><%= @booking.start_date %></p>
-          <p><%= @booking.end_date %></p>
+          <p>Requested by <%= @booking.user.fullname %></p>
+          <p>From <%= @booking.start_date %> to <%= @booking.end_date %></p>
           <%= simple_form_for(@booking) do |f| %>
             <%= f.input :status, selected: 1, collection: Booking.accept_or_refuse %>
             <%= f.button :submit, class: 'btn btn-primary' %>
@@ -22,8 +22,22 @@
           <%= f.button :submit, class: 'btn btn-primary' %>
           <% end %>
         <% end %>
-
       </div>
     </div>
+
+
+
+    <% if @booking.life.user == current_user && @booking.possible_conflicts %>
+      <h2>Possible booking conflicts</h2>
+      <% @booking.possible_conflicts.each do |conflict| %>
+        <div class="card col-3 p-3 m-1">
+          <div class="card-body">
+            <h2><%= conflict.user.fullname %></h2>
+            <p>From <%= conflict.start_date %> to <%= conflict.end_date %></p>
+            <p>Requested by <%= @booking.user.fullname %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

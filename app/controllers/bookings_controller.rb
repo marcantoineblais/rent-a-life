@@ -52,12 +52,17 @@ class BookingsController < ApplicationController
   end
 
   def owner_or_user
-    if @booking.life.user == current_user
-      redirect_to requests_path if @booking.update(status_params)
-    elsif @booking.user == current_user
-      redirect_to bookings_path if @booking.update(pending_edit_params)
+    if @booking.life.user == current_user && @booking.update(status_params) && @booking.accepted?
+      refuse_conflicts!
+      redirect_to requests_path
+    elsif @booking.user == current_user && @booking.update(pending_edit_params)
+      redirect_to bookings_path
     else
       return false
     end
+  end
+
+  def refuse_conflicts!
+    @booking.possible_conflicts.each(&:refused!)
   end
 end

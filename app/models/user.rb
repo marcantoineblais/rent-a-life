@@ -7,5 +7,9 @@ class User < ApplicationRecord
   has_many :lives
   has_many :bookings, through: :lives
 
-  validates :email, presence: true, uniqueness: true
+  validates :first_name, :last_name, :email, presence: true, uniqueness: true
+
+  def fullname
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end
