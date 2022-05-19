@@ -1,7 +1,18 @@
 <div class="container py-5">
   <h2>Who do you want to be ?</h2>
 
+<<<<<<< HEAD
+  <%= form_tag lives_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a life"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+=======
   <div class="map" data-controller="mapbox" data-mapbox-markers-value="<%= @markers.to_json %>" data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+>>>>>>> main
 
   <div class="cards mt-3">
     <% @lives.each do |life| %>

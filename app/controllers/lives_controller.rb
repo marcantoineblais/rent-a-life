@@ -2,13 +2,13 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @lives = Life.where('user_id != ?', current_user.id)
-    @markers = @lives.geocoded.map do |life|
-      {
-        lat: life.latitude,
-        lng: life.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { life: life })
-      }
+    if params[:query].present?
+      result = Life.search_by_title_and_description(params[:query])
+      @lives = result.where('user_id != ?', current_user.id)
+    elsif current_user
+      @lives = Life.where('user_id != ?', current_user.id)
+    else
+      @lives = Life.all
     end
   end
 
