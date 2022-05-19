@@ -6,7 +6,8 @@ class LivesController < ApplicationController
     @markers = @lives.geocoded.map do |life|
       {
         lat: life.latitude,
-        lng: life.longitude
+        lng: life.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { life: life })
       }
     end
   end
@@ -61,6 +62,6 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :price, :photo)
+    params.require(:life).permit(:title, :description, :price, :photo, :address)
   end
 end

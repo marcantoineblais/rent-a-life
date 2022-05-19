@@ -1,0 +1,24 @@
+.map {
+  height: 360px;
+  width: 80%;
+  margin: 0 auto;
+  object-fit: cover;
+
+  .text {
+    padding: 1em 2em;
+  }
+  .mapboxgl-popup {
+    height: 150px;
+  }
+
+  .mapboxgl-popup-content {
+    width: fit-content;
+    text-align: left;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+}
