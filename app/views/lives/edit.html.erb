@@ -5,7 +5,9 @@
       <%= simple_form_for(@life) do |f| %>
         <%= f.input :title %>
         <%= f.input :description %>
+        <%= f.input :address %>
         <%= f.input :price, as: :string %>
+        <%= f.input :photo, as: :file %>
         <%= f.button :submit, value: 'Update life', class: 'btn btn-primary' %>
       <% end %>
     </div>

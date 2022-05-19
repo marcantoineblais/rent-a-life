@@ -2,7 +2,14 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @lives = Life.all.reject { |live| live.user == current_user }
+    @lives = Life.where('user_id != ?', current_user.id)
+    @markers = @lives.geocoded.map do |life|
+      {
+        lat: life.latitude,
+        lng: life.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { life: life })
+      }
+    end
   end
 
   def show
@@ -39,9 +46,13 @@ class LivesController < ApplicationController
 
   def destroy
     @life = Life.find(params[:id])
-    @life.destroy
-
-    redirect_to lives_path
+    if @life.user == current_user
+      @life.destroy
+      notice = "Your life was deleted."
+    else
+      notice = "This life is not yours to take."
+    end
+    redirect_to my_lives_path, notice: notice
   end
 
   def my_lives
@@ -51,6 +62,6 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :price)
+    params.require(:life).permit(:title, :description, :price, :photo, :address)
   end
 end

@@ -15,6 +15,9 @@
 // Custom Component
 @import "components/cards";
 
+//Mapbox
+@import "mapbox-gl/dist/mapbox-gl";
+
 body {
 min-height: 100vh;
 height: 100%;

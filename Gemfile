@@ -75,3 +75,9 @@ gem 'enum_help'
 
 # Money management in forms
 gem 'money-rails'
+
+# cloudinary
+gem 'cloudinary', '~> 1.16.0'
+
+# Geocoding
+gem "geocoder"
