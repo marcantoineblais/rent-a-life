@@ -4,11 +4,12 @@ class LivesController < ApplicationController
   def index
     if params[:query].present?
       result = Life.search_by_title_and_description(params[:query])
-      @lives = result.all.reject { |live| live.user == current_user }
+      @lives = result.where('user_id != ?', current_user.id)
+    elsif current_user
+      @lives = Life.where('user_id != ?', current_user.id)
     else
-      @lives = Life.all.reject { |live| live.user == current_user }
+      @lives = Life.all
     end
-
   end
 
   def show
@@ -61,6 +62,6 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :price, :photo)
+    params.require(:life).permit(:title, :description, :price, :photo, :address)
   end
 end

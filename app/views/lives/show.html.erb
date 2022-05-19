@@ -5,7 +5,7 @@
       <div class="card-body">
         <h2 class="card-title"><%= @life.title %></h2>
         <% begin %>
-          <%= cl_image_tag @life.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag @life.photo.key %>
         <% rescue %>
         <% end %>
         <p><%= @life.description %></p>

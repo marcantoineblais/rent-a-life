@@ -1,6 +1,7 @@
 // SIMPLE-CARD
 .simple-card {
   max-width: 300px;
+  height: 500px;
   background-color: #FFF;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
   background-position: center;
@@ -60,6 +61,9 @@
   margin: 0 30px;
   color: #FFF;
   transition: all linear 0.25s;
+  .btn {
+    color: #ffffff;
+  }
 }
 
 
@@ -87,5 +91,11 @@
 
 .simple-card:hover .simple-card-price-and-btn {
   bottom: 30px;
+}
+
+.no-photo {
+  width: 300px;
+  height: 500px;
+  background-color: #A2D2FF;
 }
 // SIMPLE-CARD : end
