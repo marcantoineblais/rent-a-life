@@ -1,7 +1,7 @@
-<div class="container">
-  <h1>My booking history</h1>
+<div class="container py-5">
+  <h2>My booking history</h2>
 
-  <h2>Pending</h2>
+  <h3>Pending :</h3>
   <div class="cards">
     <% @bookings.select(&:pending?).each do |b| %>
       <div class="card p-3">
@@ -14,7 +14,7 @@
   <% end %>
   </div>
 
-  <h2>Accepted</h2>
+  <h3>Accepted :</h3>
   <div class="cards">
     <% @bookings.select(&:accepted?).each do |b| %>
       <div class="card p-3">
@@ -27,7 +27,7 @@
     <% end %>
   </div>
 
-  <h2>Refused</h2>
+  <h3>Refused :</h3>
     <div class="cards">
       <% @bookings.select(&:refused?).each do |b| %>
         <div class="card p-3">

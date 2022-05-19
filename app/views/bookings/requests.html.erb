@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container py-5">
   <h1>Pending requests on my lives</h1>
 
-  <h2>Pending</h2>
+  <h2>Pending :</h2>
   <div class="cards">
     <% @bookings.select(&:pending?).each do |b| %>
       <div class="card p-3">
@@ -14,7 +14,7 @@
     <% end %>
   </div>
 
-  <h2>Accepted</h2>
+  <h2>Accepted :</h2>
   <div class="cards">
     <% @bookings.select(&:accepted?).each do |b| %>
       <div class="card p-3">
