@@ -1,14 +1,14 @@
 <div class="container">
   <h1>Make a request</h1>
   <div class="row justify-content-center">
-    <div class="col-6 p-3">
+    <div class="col-6 p-3" data-controller="flatpickr">
       <h2><%= @life.title %></h2>
       <p><%= @life.description %></p>
       <p><%= @life.price %>$</p>
       <%= simple_form_for([@life, @booking]) do |f| %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true %>
-      <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.input :start_date, as: :string, input_html: {id: 'start'} %>
+        <%= f.input :end_date, as: :string, input_html: {id: "end"}  %>
+        <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
