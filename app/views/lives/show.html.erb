@@ -4,7 +4,7 @@
     <div class="projcard-container">
       <div class="projcard projcard-blue">
         <div class="projcard-innerbox">
-          <%# <img class="projcard-img" src="<% cl_image_path @life.photo.key %>
+          <img class="projcard-img" src="<%= cl_image_path @life.photo.key %>">
           <div class="projcard-textbox">
             <div class="projcard-title"><%= @life.title %></div>
             <div class="projcard-subtitle">by <%= @life.user.fullname %></div>
@@ -17,16 +17,17 @@
                 <%= @life.address %>
                 </div>
               </div>
-            <div class="projcard-tagbox">
-              <div class="projcard-tag"><%= @life.price %>$</div>
-            </div>
-            <div class="book-edit-btn">
-              <% if @life.user == current_user %>
-              <%= link_to 'Edit', edit_life_path(@life), class: "btn btn-warning" %>
-              <% else %>
-                <%= link_to 'Book this life', new_life_booking_path(@life), class: "btn btn-warning" %>
-              <% end %>
-            </div>
+            <div class="d-flex justify-content-between">
+              <div class="projcard-tagbox">
+                <div class="projcard-tag"><%= @life.price %>$</div>
+              </div>
+              <div class="book-edit-btn">
+                <% if @life.user == current_user %>
+                  <%= link_to 'Edit', edit_life_path(@life), class: "btn btn-warning" %>
+                <% else %>
+                  <%= link_to 'Book this life', new_life_booking_path(@life), class: "btn btn-warning" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -34,22 +35,11 @@
     </div>
 
  <div class="container">
-    <h2> check the lives <%= @life.user.fullname %> shares on his profile :</h2>
+    <h2 class='text-start'> Other lives by <%= @life.user.fullname %></h2>
     <div class= "container">
       <div class= "cards mt-3 d-flex justify-content-around">
-        <% @life.user.lives.first(3).each do |life| %>
-          <div class="simple-card row">
-            <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-2.jpg" class="img img-responsive">
-            <div class="simple-card-name"><%= link_to life.title, life_path(life) %></div>
-            <div class="simple-card-username">@<%= life.user.fullname %> </div>
-            <div class="simple-card-description"><%= life.description %></div>
-            <div class="simple-card-price-and-btn">
-            <div class="simple-card-price"><%= life.price %></div>
-              <div class="simple-card-btn">
-                <%= link_to "Details", life_path(life), class: "btn btn-primary" %>
-              </div>
-      </div>
-    </div>
+        <% @life.user.lives.sample(3).each do |life| %>
+          <%= render 'simplecard', life: life %>
         <% end %>
       </div>
   <div class="back-button btn btn-primary"><%= link_to 'Back', lives_path %></div>

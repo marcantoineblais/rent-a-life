@@ -57,6 +57,7 @@
 	width: 400px;
 	top: 0;
 	left: 0;
+  object-fit: cover;
 	transition: transform 0.2s ease;
 }
 .projcard:nth-child(2n) .projcard-img {
@@ -191,7 +192,7 @@
     }
 }
 .book-edit-btn {
-  margin-left: 100px;
+  margin-left: 90%;
 }
 
 .back-button a {
