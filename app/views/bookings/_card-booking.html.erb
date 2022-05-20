@@ -35,7 +35,11 @@
                 <h3>Status: <span class=""><%= b.status %></span></h3>
               </div>
               <div class="booking-card-btn">
-                <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+                <% if b.life.user == current_user && b.pending? %>
+                  <%= link_to "Review request", edit_booking_path(b), class: 'btn btn-primary' %>
+                <% else %>
+                  <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+                <% end %>
               </div>
           </div>
           </div>
