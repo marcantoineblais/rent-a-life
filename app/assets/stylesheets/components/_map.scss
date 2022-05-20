@@ -1,29 +1,13 @@
-.map {
+.map.mapboxgl-map {
   height: 360px;
   width: 80%;
   margin: 0 auto;
-  object-fit: cover;
   position: relative;
-
-  .text {
-    padding: 1em 2em;
-  }
+  overflow: visible;
 
   .mapboxgl-popup {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
-  }
-
-  .mapboxgl-popup-content {
-    width: fit-content;
-    text-align: left;
-    font-family: "Open Sans", sans-serif;
-  }
-
-  img {
-    height: 150px;
-    width: 150px;
+    width: fit-content!important;
+    z-index: 2000;
   }
 }
