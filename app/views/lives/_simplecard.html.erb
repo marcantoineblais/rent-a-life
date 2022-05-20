@@ -1,0 +1,22 @@
+<div class="simple-card">
+  <% begin %>
+    <div class="simple-card-img"
+    style="background: linear-gradient(#00000055, #00000055), url('<%= cl_image_path life.photo.key %>');
+    background-position: center;
+    background-size: cover;">
+  <% rescue %>
+    <div class="no-photo">
+  <% end %>
+      <div class="simple-card-fx">
+        <div class="simple-card-name"><%= link_to life.title, life_path(life) %></div>
+        <div class="simple-card-username">By <%= life.user.fullname %> </div>
+        <div class="simple-card-description"><%= life.description %></div>
+        <div class="simple-card-price-and-btn">
+          <div class="simple-card-price"><%= life.price %>$</div>
+          <div class="simple-card-btn" id="color">
+            <%= link_to "Details", life_path(life), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

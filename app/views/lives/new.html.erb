@@ -1,10 +1,11 @@
-<div class="container">
-  <h1>Share a life</h1>
+<div class="container py-5">
+  <h2>Share your life</h2>
   <div class="row justify-content-center">
     <div class="col-6 p-3">
       <%= simple_form_for(@life) do |f| %>
         <%= f.input :title %>
         <%= f.input :description  %>
+        <%= f.input :address %>
         <%= f.input :price %>
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: 'btn btn-primary' %>

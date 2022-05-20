@@ -1,0 +1,67 @@
+.map-card {
+  width: 150px;
+  height: 250px;
+  background-color: #222;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 10px;
+
+  a {
+    text-align: left;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .map-user-title {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    padding-top: 1em;
+  }
+
+  .map-card-photo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .map-card-title {
+    margin-bottom: 8px;
+  }
+
+  .map-card-username {
+    color: #FFF;
+    font-size: 13px;
+  }
+
+  .map-card-price-and-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 8px;
+    color: #FFF;
+    padding-bottom: 1em;
+
+    .btn {
+      color: #ffffff;
+      text-align: center;
+      width: 75px;
+    }
+  }
+
+  .map-card-icons .fa {
+    margin: 5px;
+  }
+
+  a,
+  p {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+}
+// map-CARD : end

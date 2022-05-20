@@ -1,6 +1,5 @@
 // SIMPLE-CARD
 .simple-card {
-  max-width: 300px;
   background-color: #FFF;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
   background-position: center;
@@ -11,7 +10,10 @@
   border-radius: 10px;
 }
 
-.simple-card img {
+.simple-card-img {
+  display: relative;
+  width: 300px;
+  height: 500px;
   transition: all linear 0.25s;
 }
 
@@ -60,16 +62,24 @@
   margin: 0 30px;
   color: #FFF;
   transition: all linear 0.25s;
+  .btn {
+    color: #ffffff;
+  }
 }
 
+.simple-card-fx {
+  width: 100%;
+  height: 100%;
+  transition: all linear 0.25s;
+}
 
 .simple-card .simple-card-icons .fa {
   margin: 5px;
 }
 
 // hover
-.simple-card:hover img {
-  filter: grayscale(100%);
+.simple-card:hover .simple-card-fx {
+  backdrop-filter: grayscale(1) blur(5px) contrast(1.3) ;
 }
 
 .simple-card:hover .simple-card-name {
@@ -87,5 +97,11 @@
 
 .simple-card:hover .simple-card-price-and-btn {
   bottom: 30px;
+}
+
+.no-photo {
+  width: 300px;
+  height: 500px;
+  background-color: #A2D2FF;
 }
 // SIMPLE-CARD : end

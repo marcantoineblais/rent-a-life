@@ -1,0 +1,13 @@
+.map.mapboxgl-map {
+  height: 360px;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+
+  .mapboxgl-popup {
+    height: 100%;
+    width: fit-content!important;
+    z-index: 2000;
+  }
+}
