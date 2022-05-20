@@ -28,3 +28,19 @@ padding-bottom: 150px;
 background-color: #FEF9EF;
 text-align: center;
 }
+
+.color-blue {
+  color: $primary;
+}
+.color-yellow {
+  color: $info;
+}
+.color-orange {
+  color: $warning;
+}
+.color-success {
+  color: $success;
+}
+.color-danger {
+  color: $danger;
+}

@@ -3,41 +3,155 @@
 
   <h3>Pending :</h3>
   <div class="cards">
-    <% @bookings.select(&:pending?).each do |b| %>
-      <div class="card p-3">
-        <div class="class-body">
-          <h2 class="card-title"><%= b.life.title %></h2>
-          <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
-          <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+  <% @bookings.select(&:pending?).each do |b| %>
+  <%# <% colorStatus = &:pending? ? 'color-yellow' : &:accepted? ? 'color-success' : 'color-danger' %>
+    <div class="card booking-card w-100">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="date-wrapper">
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.start_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.start_date.strftime("%B") %></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title"> To </span>
+              </div>
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.end_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.end_date.strftime("%B") %></span>
+              </div>
+            </div>
+            <div class="date-days mt-4">
+              <p>Your booking is for <%= pluralize b.date_range.count, "day" %></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="booking-card-block">
+              <div class="booking-card-name">
+                <h2 class="card-title"><%= b.life.title %></h2>
+              </div>
+              <div class="booking-card-price">
+                <p><%= b.life.price %> $</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <div class="booking-card-block">
+              <div class="booking-card-status">
+                <h3>Status: <span class="color-yellow"><%= b.status %></span></h3>
+              </div>
+              <div class="booking-card-btn">
+                <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+              </div>
+          </div>
+          </div>
         </div>
+
       </div>
+    </div>
   <% end %>
   </div>
 
   <h3>Accepted :</h3>
   <div class="cards">
     <% @bookings.select(&:accepted?).each do |b| %>
-      <div class="card p-3">
-        <div class="class-body">
-          <h2 class="card-title"><%= b.life.title %></h2>
-          <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
-          <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <h3>Refused :</h3>
-    <div class="cards">
-      <% @bookings.select(&:refused?).each do |b| %>
-        <div class="card p-3">
-          <div class="class-body">
-            <h2 class="card-title"><%= b.life.title %></h2>
-            <p class="card-text"><%= b.start_date %> to <%= b.end_date %></p>
-            <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+      <div class="card booking-card w-100">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="date-wrapper">
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.start_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.start_date.strftime("%B") %></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title"> To </span>
+              </div>
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.end_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.end_date.strftime("%B") %></span>
+              </div>
+            </div>
+            <div class="date-days mt-4">
+              <p>Your booking is for <%= pluralize b.date_range.count, "day" %></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="booking-card-block">
+              <div class="booking-card-name">
+                <h2 class="card-title"><%= b.life.title %></h2>
+              </div>
+              <div class="booking-card-price">
+                <p><%= b.life.price %> $</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <div class="booking-card-block">
+              <div class="booking-card-status">
+                <h3>Status: <span class="color-success"><%= b.status %></span></h3>
+              </div>
+              <div class="booking-card-btn">
+                <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+              </div>
+          </div>
           </div>
         </div>
-      <% end %>
+
+      </div>
     </div>
+    <% end %>
+  </div>
+  
+  <h2>Refused</h2>
+  <div class="cards">
+    <% @bookings.select(&:refused?).each do |b| %>
+      <div class="card booking-card w-100">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="date-wrapper">
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.start_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.start_date.strftime("%B") %></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title"> To </span>
+              </div>
+              <div class="date-block">
+                  <span class="date-block-day"><%= b.end_date.strftime("%d") %></span>
+                  <span class="date-block-month"><%= b.end_date.strftime("%B") %></span>
+              </div>
+            </div>
+            <div class="date-days mt-4">
+              <p>Your booking is for <%= pluralize b.date_range.count, "day" %></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="booking-card-block">
+              <div class="booking-card-name">
+                <h2 class="card-title"><%= b.life.title %></h2>
+              </div>
+              <div class="booking-card-price">
+                <p><%= b.life.price %> $</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <div class="booking-card-block">
+              <div class="booking-card-status">
+                <h3>Status: <span class="color-danger"><%= b.status %></span></h3>
+              </div>
+              <div class="booking-card-btn">
+                <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
