@@ -2,19 +2,27 @@
   <h2>Who do you want to be ?</h2>
 
   <%= form_tag lives_path, method: :get do %>
-    <%= text_field_tag :query1,
-      params[:query1],
-      class: "form-control",
-      placeholder: "Search by keyword"
-    %>
-    <%= text_field_tag :query2,
-      params[:query2],
-      class: "form-control",
-      placeholder: "Search by location"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <div class="form-custom-wrapper">
+    <div class="form-custom-inputs">
+      <%= text_field_tag :query1,
+        params[:query1],
+        class: "form-control",
+        placeholder: "Search by keyword"
+      %>
+      <%= text_field_tag :query2,
+        params[:query2],
+        class: "form-control",
+        placeholder: "Search by location"
+      %>
+    </div>
+    <div class="form-custom-submit">
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  </div>
   <% end %>
-  <div class="map" data-controller="mapbox" data-mapbox-markers-value="<%= @markers.to_json %>" data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div class="map-container card booking-card">
+    <div class="map" data-controller="mapbox" data-mapbox-markers-value="<%= @markers.to_json %>" data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
 
   <div class="cards mt-3">
     <% @lives.each do |life| %>

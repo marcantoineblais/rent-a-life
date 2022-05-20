@@ -1,0 +1,18 @@
+// FORM of the lives#index
+
+.form-custom {
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-inputs {
+    width: 90%;
+    input {
+      margin-bottom: 5px;
+    }
+  }
+  &-btn {
+
+  }
+}

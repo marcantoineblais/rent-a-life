@@ -10,6 +10,9 @@ class BookingsController < ApplicationController
   def new
     @life = Life.find(params[:life_id])
     @booking = Booking.new
+    @booked_dates = @life.booked_dates.map do |date|
+      date
+    end
   end
 
   def create
