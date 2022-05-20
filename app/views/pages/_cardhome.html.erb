@@ -23,7 +23,7 @@
 
   <div class="container">
     <div class="cards mt-3">
-      <% @lives.sample(6).each do |life| %>
+      <% @lives.first(3).each do |life| %>
         <%= render 'lives/simplecard', life: life %>
       <% end %>
     </div>
