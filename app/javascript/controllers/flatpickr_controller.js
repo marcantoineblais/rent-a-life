@@ -4,19 +4,20 @@ import rangePlugin from 'flatpickr/dist/plugins/rangePlugin'
 
 export default class extends Controller {
   static values = {
-    booked_dates: Array
+    bookedDates: Array
   }
 
 
   connect() {
     this.pickerLoader()
+    console.log(this.bookedDatesValue)
   }
 
   pickerLoader() {
     flatpickr("#start", {
       minDate: "today",
       "plugins": [new rangePlugin({ input: '#end'})],
-      disable: [this.booked_datesValue],
+      disable: this.bookedDatesValue,
       dateFormat: "Y-m-d"
     })
   }
