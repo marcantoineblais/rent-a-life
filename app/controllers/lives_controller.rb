@@ -73,8 +73,7 @@ class LivesController < ApplicationController
       result = Life.search_by_title_and_description(params[:query1])
       @lives = result.where('user_id != ?', current_user.id)
     elsif params[:query1].present?
-      result = Life.search_by_title_and_description(params[:query1])
-      @lives = result
+      @lives = Life.search_by_title_and_description(params[:query1])
     elsif current_user
       @lives = Life.where('user_id != ?', current_user.id)
     else
