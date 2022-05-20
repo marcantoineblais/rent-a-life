@@ -11,7 +11,6 @@
 .projcard-container {
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
 }
 .projcard {
 	position: relative;
@@ -50,6 +49,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+  text-align: start;
 }
 .projcard-img {
 	position: absolute;
@@ -92,7 +92,6 @@
 	left: -55px;
 	height: 140%;
 	width: 60px;
-	transform: rotate(8deg);
 }
 .projcard:nth-child(2n) .projcard-textbox::before {
 	display: none;
@@ -109,8 +108,8 @@
 	position: relative;
 }
 .projcard-title {
-	font-family: 'Voces', 'Open Sans', arial, sans-serif;
-	font-size: 24px;
+	font-family: "Nunito", "Helvetica", "sans-serif";
+	font-size: 30px;
 }
 .projcard-subtitle {
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
@@ -191,8 +190,11 @@
       color: #fff
     }
 }
+.book-edit-btn {
+  margin-left: 100px;
+}
 
-.back-button {
+.back-button a {
   text-decoration: none;
   color: #fff
 }
