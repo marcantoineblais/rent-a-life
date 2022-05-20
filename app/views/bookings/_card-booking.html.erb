@@ -37,7 +37,7 @@
               <div class="booking-card-btn">
                 <% if b.life.user == current_user && b.pending? %>
                   <%= link_to "Review request", edit_booking_path(b), class: 'btn btn-primary' %>
-                <% else %>
+                <% elsif %>
                   <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
                 <% end %>
               </div>

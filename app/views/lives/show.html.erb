@@ -11,13 +11,12 @@
             <div class="projcard-bar"></div>
               <div class="projcard-description">
                 <div>
-                <%= @life.description %>
+                  <%= @life.description %>
                 </div>
                 <div>
-                <%= @life.address %>
+                  <%= @life.address %>
                 </div>
               </div>
-            <div class="d-flex justify-content-between">
               <div class="projcard-tagbox">
                 <div class="projcard-tag"><%= @life.price %>$</div>
               </div>
@@ -28,7 +27,7 @@
                   <%= link_to 'Book this life', new_life_booking_path(@life), class: "btn btn-warning" %>
                 <% end %>
               </div>
-            </div>
+            <
           </div>
         </div>
       </div>
