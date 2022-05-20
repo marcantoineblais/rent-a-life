@@ -1,6 +1,6 @@
 .map.mapboxgl-map {
   height: 360px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   overflow: visible;
@@ -10,4 +10,8 @@
     width: fit-content!important;
     z-index: 2000;
   }
+}
+.mapboxgl-popup-close-button {
+  background-color: white!important;
+  border-radius: 50%!important;
 }
