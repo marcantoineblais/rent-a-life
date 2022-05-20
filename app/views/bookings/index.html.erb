@@ -1,7 +1,7 @@
-<div class="container">
-  <h1>My booking history</h1>
+<div class="container py-5">
+  <h2>My booking history</h2>
 
-  <h2>Pending</h2>
+  <h3>Pending :</h3>
   <div class="cards">
   <% @bookings.select(&:pending?).each do |b| %>
   <%# <% colorStatus = &:pending? ? 'color-yellow' : &:accepted? ? 'color-success' : 'color-danger' %>
@@ -53,7 +53,7 @@
   <% end %>
   </div>
 
-  <h2>Accepted</h2>
+  <h3>Accepted :</h3>
   <div class="cards">
     <% @bookings.select(&:accepted?).each do |b| %>
       <div class="card booking-card w-100">
@@ -103,7 +103,7 @@
     </div>
     <% end %>
   </div>
-
+  
   <h2>Refused</h2>
   <div class="cards">
     <% @bookings.select(&:refused?).each do |b| %>
@@ -146,7 +146,7 @@
               <div class="booking-card-btn">
                 <%= link_to "See details", booking_path(b), class: 'btn btn-primary' %>
               </div>
-          </div>
+            </div>
           </div>
         </div>
 

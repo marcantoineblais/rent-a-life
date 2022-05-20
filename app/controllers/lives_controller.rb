@@ -2,7 +2,26 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @lives = Life.all.reject { |live| live.user == current_user }
+    if params[:query].present? && current_user
+      result = Life.search_by_title_and_description(params[:query])
+      @lives = result.where('user_id != ?', current_user.id)
+    elsif params[:query].present?
+      result = Life.search_by_title_and_description(params[:query])
+      @lives = result
+    elsif current_user
+      @lives = Life.where('user_id != ?', current_user.id)
+    else
+      @lives = Life.all
+    end
+    if @lives.geocoded
+      @markers = @lives.geocoded.map do |life|
+        {
+          lat: life.latitude,
+          lng: life.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { life: life })
+        }
+      end
+    end
   end
 
   def show
@@ -55,6 +74,6 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :price, :photo)
+    params.require(:life).permit(:title, :description, :price, :photo, :address)
   end
 end
