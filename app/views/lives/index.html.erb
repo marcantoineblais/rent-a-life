@@ -2,10 +2,15 @@
   <h2>Who do you want to be ?</h2>
 
   <%= form_tag lives_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
+    <%= text_field_tag :query1,
+      params[:query1],
       class: "form-control",
-      placeholder: "Find a life"
+      placeholder: "Search by keyword"
+    %>
+    <%= text_field_tag :query2,
+      params[:query2],
+      class: "form-control",
+      placeholder: "Search by location"
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
