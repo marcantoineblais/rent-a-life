@@ -1,7 +1,20 @@
-<div class="d-flex align-items-center">
-  <%= cl_image_tag life.photo.key %>
-  <div class="text">
-    <h2><%= life.title %></h2>
-    <p><%= life.address %></p>
-  </div>
+
+<div class="map-card">
+  <% begin %>
+    <div class="map-card-photo"
+    style="background: linear-gradient(#000000aa, #000000aa), url('<%= cl_image_path life.photo.key %>');
+    background-position: center;
+    background-size: cover;">
+  <% rescue %>
+    <div class="no-photo">
+  <% end %>
+      <div class="map-user-title">
+        <p class="map-card-title"><%= link_to life.title, life_path(life) %></p>
+        <p class="map-card-username">By <%= life.user.fullname %></p>
+      </div>
+      <div class="map-card-price-and-btn">
+        <p class="map-card-price"><%= life.price %>$</p>
+        <%= link_to "Details", life_path(life), class: "btn btn-primary" %>
+      </div>
+    </div>
 </div>
