@@ -2,8 +2,8 @@
   <h2>Who do you want to be ?</h2>
 
   <%= form_tag lives_path, method: :get do %>
-  <div class="form-wrapper">
-    <div class="form-inputs">
+  <div class="form-custom-wrapper">
+    <div class="form-custom-inputs">
       <%= text_field_tag :query1,
         params[:query1],
         class: "form-control",
@@ -15,7 +15,7 @@
         placeholder: "Search by location"
       %>
     </div>
-    <div class="form-submit">
+    <div class="form-custom-submit">
       <%= submit_tag "Search", class: "btn btn-primary" %>
     </div>
   </div>
