@@ -2,17 +2,8 @@ class LivesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:query].present? && current_user
-      result = Life.search_by_title_and_description(params[:query])
-      @lives = result.where('user_id != ?', current_user.id)
-    elsif params[:query].present?
-      result = Life.search_by_title_and_description(params[:query])
-      @lives = result
-    elsif current_user
-      @lives = Life.where('user_id != ?', current_user.id)
-    else
-      @lives = Life.all
-    end
+    filter_by_keyword
+    filter_by_location
     if @lives.geocoded
       @markers = @lives.geocoded.map do |life|
         {
@@ -75,5 +66,23 @@ class LivesController < ApplicationController
 
   def life_params
     params.require(:life).permit(:title, :description, :price, :photo, :address)
+  end
+
+  def filter_by_keyword
+    if params[:query1].present? && current_user
+      result = Life.search_by_title_and_description(params[:query1])
+      @lives = result.where('user_id != ?', current_user.id)
+    elsif params[:query1].present?
+      result = Life.search_by_title_and_description(params[:query1])
+      @lives = result
+    elsif current_user
+      @lives = Life.where('user_id != ?', current_user.id)
+    else
+      @lives = Life.all
+    end
+  end
+
+  def filter_by_location
+    @lives = @lives.near(params[:query2], 25) if params[:query2].present?
   end
 end
